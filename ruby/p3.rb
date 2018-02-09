@@ -8,20 +8,11 @@
 require 'prime'
 
 def largest_prime_factor(num)
-  puts "Start time: #{Time.now}"
-  answer = prime_factors(num).last
-  puts "End time: #{Time.now}"
-
-  answer
+  factors(num).reverse.each { |div| return div if Prime.prime?(div) }
 end
 
-def prime_factors(num)
-  prime_factors = Array.new
-
-  Prime.each do |prime|
-    break if prime > num
-    prime_factors.push(prime) if num % prime == 0
-  end
-
-  prime_factors
+def factors(num)
+  lower_factors = (2...Math.sqrt(num).ceil).select { |div| num % div == 0 }
+  upper_factors = lower_factors.map { |div| num / div }
+  all_factors = (lower_factors + upper_factors).uniq.sort
 end
