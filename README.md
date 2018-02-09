@@ -1,4 +1,4 @@
 ## project-euler
 yihwan
 
-to learn things and for fun
+to learn things and just for fun
